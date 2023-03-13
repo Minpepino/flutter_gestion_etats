@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'firstComponent.dart';
 
 void main() {
   runApp(Application());
@@ -25,9 +26,33 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   TextEditingController controller = TextEditingController();
   String nom = "";
+  List data =[{
+    "link":"Le lien",
+    "title":"Flutter framework - Build apps for any screen - Get StartedFlutter framework",
+    "description":"Control every pixel to create customized & adaptive designs that look great " 
+                   "on any screen. Take control of your codebase with plugins, testing, dev tools & build " 
+                   "high quality apps. Multi-Platform. Mobile Ads SDK. Null Safe Code. Single Codebase.Web Stable. Hot Reload."
+  },
+  
+  {
+    "link":"Le lien",
+    "title":"Flutter framework - Build apps for any screen - Get StartedFlutter framework",
+    "description":"Control every pixel to create customized & adaptive designs that look great " 
+                   "on any screen. Take control of your codebase with plugins, testing, dev tools & build " 
+                   "high quality apps. Multi-Platform. Mobile Ads SDK. Null Safe Code. Single Codebase.Web Stable. Hot Reload."
+  },
+
+  {
+    "link":"Le lien",
+    "title":"Flutter framework - Build apps for any screen - Get StartedFlutter framework",
+    "description":"Control every pixel to create customized & adaptive designs that look great " 
+                   "on any screen. Take control of your codebase with plugins, testing, dev tools & build " 
+                   "high quality apps. Multi-Platform. Mobile Ads SDK. Null Safe Code. Single Codebase.Web Stable. Hot Reload."
+  }
+
+  ];
 
   // This widget is the root of your application.
   @override
@@ -39,25 +64,26 @@ class _MyAppState extends State<MyApp> {
         children: [
           //Permet de rendre une zone quelconque cliquable
           Column(
-            children:const[
-             
-            ],
+            children: 
+              data.map((e) => GoogleSearcComponent(
+                link: e['link'],
+                title: e['title'],
+                description: e['description']))
+              .toList()
           ),
 
           InkWell(
-            hoverColor: Colors.greenAccent,
-            child: Container(
-              padding:
-                const EdgeInsets.symmetric(vertical:10, horizontal:15),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.lightGreenAccent
+              hoverColor: Colors.greenAccent,
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.lightGreenAccent),
+                child: Text("Ouvrir une boite de dialogue",
+                    style: Theme.of(context).textTheme.bodyMedium),
               ),
-              child:Text("Ouvrir une boite de dialogue",
-                style:Theme.of(context).textTheme.bodyMedium),
-            ),
-            onTap:(){}
-          ),
+              onTap: () {}),
         ],
       ),
     ));
